@@ -1,0 +1,210 @@
+---
+layout: post
+title: "Grammar"
+date: 2013-01-01 13:05
+comments: false
+categories: Code
+---
+
+I've recently been looking at Ruby, mostly due to an in-joke at work. It is advertised as a language with a readable, friendly syntax, and it made me think of the syntax and grammar used in modern Objective-C.
+
+Consider the following "simple" example from one of my earlier posts:
+
+``` objc
+[myArray enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+    if (indexOfViewToShow != idx)
+        view.hidden = YES;
+}];
+```
+
+What on earth is going on here? In this post, I will take this code sample apart and explain each character.
+
+<!--more-->
+
+There are some English words, if we manage to separate out the camelCase:
+
+- my
+- array
+- enumerate
+- objects
+- using
+- block
+- view
+- integer
+- stop
+- index
+- of
+- to
+- show
+- hidden
+- yes
+
+Some of those words are pretty straightforward, some may only be familiar to programmer types. One might be able to guess, from reading, that this bit of code has something to do with hiding stuff.
+
+Aside from the words, look at all the punctuation in there:
+
+- [
+- :
+- ^
+- (
+- *
+- ,
+- )
+- {
+- !
+- =
+- ;
+- }
+- ]
+
+Its like an explosion in a smiley factory, and this code isn't even doing anything complicated. How did we get here? How is a beginner supposed to _begin_?
+
+## One bite at a time
+
+    ;
+
+The semicolon. This appears a couple of times in our example, and is a fairly simple one: it means the end of a statement. I deliberately haven't said the end of a _line_, because there are several lines in the example that don't have semicolons at the end. Full stops aren't used for this purpose, since that would be incredibly confusing when using decimal numbers. 
+
+    YES;
+    
+YES and NO are the two _Boolean_ values, named after Boole, a British mathematician who was never unsure about anything.
+
+    = YES;
+
+Does what it looks like. Something equals YES _end of statement_. There is some subtlety here - "equal" can be a _assignment_ (make this equal that) or a _comparison_ (does this equal that?). In Objective-C, a single equals sign is for assignment, a double equals sign `==` is for comparison. 
+
+    hidden = YES;
+    
+From what we learned above, this makes hidden, whatever that is, equal YES.
+
+    view.hidden = YES;
+    
+Another new punctuation mark. The full stop has _three_ uses for us in Objective-C, two of them uncomfortably similar. It can mean a decimal point, within a number, which is a safe and familiar one. It can mean access to a member of a `struct`, which is a concept from C, or it can mean access to an object's _properties_, using so-called **dot notation**.
+
+The last two can be very easily confused, particularly when a struct is the returned property, which is why there was minor uproar when it was added to the language. In our example, we are setting the `hidden` property of the `view` object to `YES`. Without further context it isn't really possible to tell if `view` is an object or a struct, and therefore if `hidden` is a property or a named member of the struct, but at this point it doesn't matter - something on `view`, called `hidden`, is being set to `YES`. 
+
+Now we need to look at the line above: 
+
+```obj-c
+if (indexOfViewToShow != idx)
+    view.hidden = YES;
+```
+
+That's a few too many bites. Let's trim it down a little.
+
+```obj-c
+if ( something )
+    view.hidden = YES;
+```
+
+This is the `if()` statement, essentially the thing that turns a computer program from a boring stored list of actions into a magical living something that can _think_, and _respond_. It's a biggie. 
+
+How it works is this: if (_something in brackets_) is true, do the next thing I say. Otherwise, do the thing after that. 
+
+In our case, the "the next thing I say" is `view.hidden = YES;`. We already know what that means, so let's look at the _something in brackets_:
+
+    indexOfViewToShow != idx
+    
+Here's the equals sign again, this time with an exclamation point in front of it. Earlier when discussing the equals sign, we said that there were assignment or comparison operators, and a double equals sign was for comparison, so `==` means `is this equal to that?`. `!=` is the opposite. It means `is this different to that?`. The question we are asking, then, is `is indexOfViewToShow different to idx?`. If the answer is yes, then we need to do `view.hidden = YES;`. 
+
+What is `indexOfViewToShow` and `idx`? Well, we can see `idx` mentioned elsewhere in the code, so we'll get to that, and we can assume, from its helpful name, that `indexOfViewToShow` is the index of the view that we want to show. So the our code is starting to make more sense, hopefully. 
+
+Let's zoom out a little bit further. Just like English, in code, an open bracket (of whatever shape) must always be matched by a closing bracket. We can see that the code we have looked at so far is enclosed in a pair of curly brackets, or _braces_: 
+
+```obj-c
+...{
+    if (indexOfViewToShow != idx)
+        view.hidden = YES;
+}...
+```
+
+Braces are used to wrap up a block of code, which can consist of one or more individual statements. Astute readers will have thought, when I was discussing if statements: "what if the next thing I want to do is more than one thing?". Braces are your friend. You'd do this:
+
+```obj-c
+if (something)
+{
+	do something;
+	do something else;
+	do something else;
+}
+
+do the rest of your business;
+```
+
+What are the braces doing in our code sample? All they are enclosing is our if statement and following statement, which in the ordinary course of things don't need to be grouped together. But if we go back a few characters from the opening brace, we see this little structure:
+
+```obj-c
+^(something) {
+```
+
+The key character here is the caret `^`. This tells us that we are looking at an [Objective-C Block](http://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html). A block is a very powerful, very useful construct that allows you to define a chunk of code, wrap it up and give it to something else to be executed at a later point in time. The syntax gets a little complex, so let's break it down as we've done with everything else so far. 
+
+    ^
+    
+Hey! Here comes a block!
+
+```obj-c
+(UIView *view, NSUInteger idx, BOOL *stop)
+```
+    
+This is a list of things that the code in the block is going to be able to use, called the _arguments_. Some blocks don't have any arguments, so that section can be missed out.
+
+```obj-c
+{
+    if (indexOfViewToShow != idx)
+        view.hidden = YES;
+}
+```
+
+This is the code in the block itself. A full discussion of blocks is outside the scope of this article, we're just talking about the use of symbols and grammar. 
+
+Let's take another look at the arguments. We can see they are in the form of a list, with the individual items separated by commas. Commas are used to separate list items in Objective-C. Each list item comes in two parts. Our block has three arguments, let's look at them individually: 
+
+- `UIView *view`
+
+The first word is the _type_, the second is the _name_. And look, a bonus piece of punctuation - what's that `*` doing there? That means that `view` is a _pointer_ to an address in memory, rather than something that directly contains the data we're concerned about. I'd check out [All the C You Need to Know](https://itunes.apple.com/gb/book/all-the-c-you-need-to-know/id581989356?mt=11) for a better explanation than I'm capable of giving, but the key point is as above - with pointers, we're talking about a place in memory, rather than the thing contained in that place. There are two main reasons you'd do that: either you don't know how much memory the thing might use (typically an Objective-C object) or you need to talk about a specific point in memory. 
+
+In this case, we're looking at an object (a `UIView`) rather than a primitive C type. This is the most common use of pointers in Objective-C, an example of the other is coming up very soon. The `view` here is the very same view we are setting the `hidden` property on inside our block!
+
+- `NSUInteger idx`
+
+This is a primitive type, an unsigned integer, called `idx`. We use this inside our block too - to compare against `indexOfViewToShow`. 
+
+- `BOOL *stop`
+
+A BOOL is a primitive type (we discussed it earlier - YES or NO) but the asterisk indicates that we've got a pointer to it here. This is an example of the other common use of pointers - to allow the value stored in a primitive type to be amended by the unit of code you've passed it to, by passing in the address in memory instead of its contents. We don't use this inside our block, but if we did, we could set the value of `*stop` to `YES`, and this can be detected by whatever piece of code is running the block. 
+
+Which brings us neatly to the next symbol in the example. Before the `^` which indicates the block, we have a colon `:`. This is used to indicate a method parameter. This is similar to the arguments in a block, but in Objective-C we have the helpful concept of meaningful method names, with parameter(s) interspersed throughout. Here is a typical C function call:
+
+    CGRectMake(10.0,30.0,100.0,200.0);
+    
+Yes, it takes four arguments, but what do they mean? Simply reading the code doesn't give you any context. Here is an Objective-C method call:
+
+    [title stringByPaddingToLength:30 withString:@" " startingAtIndex:0];
+    
+Yes, it's verbose. But it's also obvious what's going on. You spend (or should spend) far more time reading code than writing it. Three arguments, each indicated by a colon, and the name of the method forms a clear English description of what is going to happen. Method naming like this is what makes this language great. Or terrible, depending on your opinion. 
+
+You'll notice that in my last example I also sneaked in the remaining two punctuation symbols from our original example - the square brackets. These surround each method call. Method calls look like this:
+
+    [receiver doSomethingWithThis:argument andThat:otherArgument];
+    
+The _receiver_ is the thing that will perform the method. It is called the receiver for historical reasons - Objective-C is based on Smalltalk, which had the concept of sending _messages_ to _receivers_.
+
+In our example, the receiver is called `myArray`, the method is called `enumerateObjectsUsingBlock:` and it has a single argument, which is the block we have described earlier. 
+
+Which brings us to the end of our dismantling of the code. Let's put it all back together:
+
+``` objc
+[myArray enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
+    if (indexOfViewToShow != idx)
+        view.hidden = YES;
+}];
+```
+
+What's happening here is that an array, `myArray`, is being told to enumerate the objects contained within it. It manages this using a block, passing in the object contained in the array, the index of the object within the array, and a pointer to a Boolean variable used to tell the array to stop enumerating, if required. 
+
+Within the block it sets the hidden property on the object (which we know is a `UIView`) to YES if the index of the object doesn't match an external variable. 
+
+Easy when you know how? 
+
+ 
