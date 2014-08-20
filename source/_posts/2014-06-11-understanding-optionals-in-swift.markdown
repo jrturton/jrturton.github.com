@@ -91,7 +91,7 @@ You can set an optional back to `.None` by assigning `nil` :
 perhapsInt = nil
 ```
 
-This is all covered in depth in Apple's language guide. The key thing to understand (which isn't really covered until the end, and who reads to the end of books nowadays?) is the nature of an Optional and the fact that it is a separate type, rather than a special annotation of a standard type. Suddenly, this initially mind-blowing code from the Intermediate Swift video (session 403), makes sense:
+This is all covered in depth in Apple's language guide. The key thing to understand (which isn't really covered until the end, and who reads to the end of books nowadays?) is the nature of an Optional and the fact that it is **a separate type, rather than a special annotation of a standard type**. Suddenly, this initially mind-blowing code from the Intermediate Swift video (session 403), makes sense:
 
 ```
 func stateFromPlist(list: Dictionary<String, AnyObject>) -> State? {
