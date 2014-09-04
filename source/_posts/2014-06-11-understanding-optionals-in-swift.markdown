@@ -16,7 +16,7 @@ Optionals are Swift's way of unifying the representation of Nothingness. By usin
 ## How do they work?
 Here's an optional integer declaration:
 
-```
+```swift
 var perhapsInt: Int?
 ```
 
@@ -40,7 +40,7 @@ Once you understand that Optionals are a distinct type, then the process of "unw
 
 An Optional is declared by using a `?` after the type:
 
-```
+```swift
 var perhapsInt : Int?
 ```
 
@@ -48,7 +48,7 @@ This is automatically set to a `.None` value.
 
 You can check if an Optional contains a value by comparing it to `nil`:
 
-```
+```swift
 var perhapsInt: Int?
 perhapsInt = 1
 if perhapsInt != nil {
@@ -59,14 +59,14 @@ if perhapsInt != nil {
 
 Removing the `!` is a compile time error, because you're not unwrapping the Optional. Unwrapping the Optional when it has a `None` value is a run-time error:
 
-```
+```swift
 var perhapsInt: Int?
 let intString = String(perhapsInt!)
 ```
 
 Instead of checking and then force unwrapping the Optional, you can combine the two with what's known as _Optional Binding_:
 
-```
+```swift
 var perhapsInt: Int?
 perhapsInt = 1
 if let actualInt = perhapsInt {
@@ -76,7 +76,7 @@ if let actualInt = perhapsInt {
 
 You can also use the (slightly more compact) _nil coalescing operator_ to supply a default value if the optional doesn't have one:
 
-```
+```swift
 var perhapsInt: Int?
 let definiteInt = perhapsInt ?? 2
 println(definiteInt) // prints 2
@@ -87,13 +87,13 @@ println(anotherInt) // prints 3
 
 You can set an optional back to `.None` by assigning `nil` :
 
-```
+```swift
 perhapsInt = nil
 ```
 
 This is all covered in depth in Apple's language guide. The key thing to understand (which isn't really covered until the end, and who reads to the end of books nowadays?) is the nature of an Optional and the fact that it is **a separate type, rather than a special annotation of a standard type**. Suddenly, this initially mind-blowing code from the Intermediate Swift video (session 403), makes sense:
 
-```
+```swift
 func stateFromPlist(list: Dictionary<String, AnyObject>) -> State? {
 	switch (list["name"], list["population"], list["abbr"]) { 
 		case (.Some(let listName as NSString),
@@ -109,19 +109,19 @@ func stateFromPlist(list: Dictionary<String, AnyObject>) -> State? {
 
 What is happening here is the following:
 
-```
+```swift
 func stateFromPlist(list: Dictionary<String, AnyObject>) -> State?
 ```
 
 Here's the function declaration. It takes a `Dictionary`, with `String` Keys and `AnyObject` values. It returns an Optional `State`.
 
-```
+```swift
 switch (list["name"], list["population"], list["abbr"])
 ```
 
 Here the dictionary is unpacked into a tuple containing three Optionals - dictionary subscripts return Optionals, since the dictionary might not contain a value. Because switch statements are superpowered in Swift, you can then match on a complex set of criteria:
 
-```
+```swift
 case (.Some(let listName as NSString),
         .Some(let pop as NSNumber),
         .Some(let abbr as NSString))
@@ -129,7 +129,7 @@ case (.Some(let listName as NSString),
 
 Remember, Optionals are enums. Here, the switch statement is checking for the `.Some` case and associated value for each part of the tuple. If a value is there, you can use your knowledge of the structure to extract the strings and numbers from the optionals into constants of the appropriate type. If any of the values are missing, the case will not be executed.
 
-```
+```swift
 where abbr.length == 2:
 ```	
 
@@ -139,7 +139,7 @@ Only if all of the entries from the dictionary contain values, and if the abbrev
 
 This one function shows what great promise there is in Swift. The equivalent Objective-C code would have been something like the following, and would become immensely more complex with additional validation or processing rules:
 
-```
+```objc
 -(State*)stateFromPlist:(NSDictionary*)plist
 {
 	NSString *name = plist[@"name"];

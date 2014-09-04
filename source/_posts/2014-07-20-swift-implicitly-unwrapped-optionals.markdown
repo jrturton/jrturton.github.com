@@ -13,7 +13,7 @@ From the Swift / iOS work I've done so far the principal use has been for proper
 
 If outlets were declared as simple `var` properties, a default value would need to be set or the initializer would have to set them, otherwise the project would not compile. Setting the property type to an Optional would remove this requirement, since Optionals get a default value of `.None`, but then you'd have to unwrap it all over your code:
 
-```
+```swift
 var label : UILabel?
 ...
 label!.text = "Unwrapped label"
@@ -23,7 +23,7 @@ This works! but! it! looks! terrible!
 
 Making the property an implicitly unwrapped optional is functionally identical but much more readable:
 
-```
+```swift
 var label : UILabel!
 ...
 label.text = "Unwrapped label"
@@ -41,7 +41,7 @@ If it's good enough for Apple, it's good enough for the rest of us. Disconnected
 
 You can still check for a value in an implicitly unwrapped optional, if there's a chance it will not have a value:
 
-```
+```swift
 if label != nil {
 	label.text = "Yes, there's a label here"
 }
