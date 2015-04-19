@@ -7,9 +7,9 @@ sharing: true
 footer: true
 ---
 
-I am an iOS developer at [Mubaloo](http://www.mubaloo.com) by day. In my spare time I write apps for [Vertical Turtle](http://www.verticalturtle.co.uk) and do some writing and editing for [raywenderlich.com](http://www.raywenderlich.com).
+I am an iOS developer at [MartianCraft](http://martiancraft.com). In my spare time I write apps for [Vertical Turtle](http://www.verticalturtle.co.uk) and do some writing and editing for [raywenderlich.com](http://www.raywenderlich.com).
 
-I was technical editor of [Core Data By Tutorials](http://www.raywenderlich.com/store/core-data-tutorials-ios-8-swift-edition?source=richardturton) (affiliate link) which you can also buy as part of the [Swift By Tutorials Bundle](http://www.raywenderlich.com/store/swift-tutorials-bundle?source=richardturton) (another affiliate link).
+I was technical editor of [Core Data By Tutorials](http://www.raywenderlich.com/store/core-data-tutorials-ios-8-swift-edition?source=richardturton) (affiliate link) which you can also buy as part of the [Swift By Tutorials Bundle](http://www.raywenderlich.com/store/swift-tutorials-bundle?source=richardturton) (another affiliate link). I was also the tech editor of [iOS Animations By Tutorials](http://www.raywenderlich.com/store/ios-animations-by-tutorials?source=richardturton) (er, yet another affiliate link).
 
 I like to answer questions on [Stack Overflow](http://stackoverflow.com):
 <a href="http://stackoverflow.com/users/852828/jrturton">
@@ -18,7 +18,7 @@ I like to answer questions on [Stack Overflow](http://stackoverflow.com):
 
 You can see some of my code on [GitHub](https://github.com/jrturton). 
 
-If you're interested in employing me, take a look at my [Stack Overflow Careers profile](http://careers.stackoverflow.com/jrturton), though I am currently very happy in Bristol with Mubaloo!    
+If you're interested in employing me, take a look at my [Stack Overflow Careers profile](http://careers.stackoverflow.com/jrturton), though I am currently very happy, so make it interesting.    
 
 I like to talk rubbish on Twitter:
 
