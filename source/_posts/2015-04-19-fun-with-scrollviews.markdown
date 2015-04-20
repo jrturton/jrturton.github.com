@@ -59,6 +59,8 @@ Pull-to-refresh controls work by adding additional values to the top content off
 
 That is a whole lot of theory, and reading about scroll views isn't the best way to understand the mechanics of them. I've made a [demo project](http://www.github.com/jrturton/funwithscrollviews) which allows you to see and adjust the numbers for a scroll view. I found it very useful when writing this article, hopefully it will aid your understanding as well. The demo project was used to generate the animated screenshot above.
 
+**UPDATE**: I've amended the sample project to also list all the delegate calls that happen when scrolling occurs.
+
 ## Further reading
 
 [objc.io](http://www.objc.io/issue-3/scroll-view.html) has a great discussion of how scrollviews work. In summary, it all comes down to rectangles (doesn't everything?). [Ole Begemann](http://oleb.net/blog/2014/04/understanding-uiscrollview/) has also written a fantastic overview. 
