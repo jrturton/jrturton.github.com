@@ -1,0 +1,14 @@
+<div class="highlight"><pre><span class="k">init</span><span class="o">?</span><span class="p">(</span><span class="n">_</span> <span class="nl">json</span><span class="p">:</span> <span class="n">JSON</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="k">let</span> <span class="n">number</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">].</span><span class="kt">int</span> <span class="p">{</span>
+		<span class="nb">self</span><span class="p">.</span><span class="n">noticeID</span> <span class="o">=</span> <span class="n">number</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">nil</span>
+	<span class="p">}</span>
+	<span class="k">if</span> <span class="k">let</span> <span class="n">title</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">&quot;title&quot;</span><span class="p">].</span><span class="n">string</span> <span class="p">{</span>
+		<span class="nb">self</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+	<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">nil</span>
+	<span class="p">}</span>
+	<span class="c1">// You get the picture...</span>
+<span class="p">}</span>
+</pre></div>

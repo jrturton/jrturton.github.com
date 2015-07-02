@@ -1,0 +1,9 @@
+<div class="highlight"><pre><span class="k">extension</span> <span class="bp">NSManagedObjectContext</span> <span class="p">{</span>
+    
+    <span class="k">func</span> <span class="n">insert</span><span class="o">&lt;</span><span class="nl">T</span> <span class="p">:</span> <span class="bp">NSManagedObject</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">entity</span><span class="p">:</span> <span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">entityName</span> <span class="o">=</span> <span class="n">entity</span><span class="p">.</span><span class="n">entityName</span>
+        <span class="k">return</span> <span class="bp">NSEntityDescription</span><span class="p">.</span><span class="n">insertNewObjectForEntityForName</span><span class="p">(</span><span class="n">entityName</span><span class="p">,</span> <span class="nl">inManagedObjectContext</span><span class="p">:</span><span class="nb">self</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="n">T</span>
+    <span class="p">}</span>
+    
+<span class="p">}</span>
+</pre></div>

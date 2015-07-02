@@ -1,0 +1,13 @@
+<div class="highlight"><pre><span class="k">@interface</span> <span class="bp">UIView</span> <span class="nl">(Autolayout)</span>
+<span class="p">+(</span><span class="kt">id</span><span class="p">)</span><span class="nf">autolayoutView</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="bp">UIView</span> <span class="nl">(Autolayout)</span>
+<span class="p">+(</span><span class="kt">id</span><span class="p">)</span><span class="nf">autolayoutView</span>
+<span class="p">{</span>
+    <span class="bp">UIView</span> <span class="o">*</span><span class="n">view</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span> <span class="n">new</span><span class="p">];</span>
+    <span class="n">view</span><span class="p">.</span><span class="n">translatesAutoresizingMaskIntoConstraints</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">view</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</pre></div>

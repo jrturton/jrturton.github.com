@@ -1,0 +1,60 @@
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">viewDidLoad</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+    
+    <span class="bp">UIView</span> <span class="o">*</span><span class="n">headerView</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIView</span> <span class="n">autolayoutView</span><span class="p">];</span>
+    <span class="n">headerView</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">lightGrayColor</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">headerView</span><span class="p">];</span>
+    
+    <span class="bp">UILabel</span> <span class="o">*</span><span class="n">headline</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UILabel</span> <span class="n">autolayoutView</span><span class="p">];</span>
+    <span class="n">headline</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIFont</span> <span class="nl">systemFontOfSize</span><span class="p">:</span><span class="mf">30.0</span><span class="p">];</span>
+    <span class="n">headline</span><span class="p">.</span><span class="n">numberOfLines</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">headline</span><span class="p">.</span><span class="n">preferredMaxLayoutWidth</span> <span class="o">=</span> <span class="mf">125.0</span><span class="p">;</span> <span class="c1">// This is necessary to allow the label to use multi-line text properly</span>
+    <span class="n">headline</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">yellowColor</span><span class="p">];</span> <span class="c1">// So we can see the sizing</span>
+    <span class="n">headline</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&quot;Kitten kills again&quot;</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">headerView</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">headline</span><span class="p">];</span>
+    
+    <span class="bp">UILabel</span> <span class="o">*</span><span class="n">byline</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UILabel</span> <span class="n">autolayoutView</span><span class="p">];</span>
+    <span class="n">byline</span><span class="p">.</span><span class="n">font</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIFont</span> <span class="nl">systemFontOfSize</span><span class="p">:</span><span class="mf">14.0</span><span class="p">];</span>
+    <span class="n">byline</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">greenColor</span><span class="p">];</span> <span class="c1">// So we can see the sizing</span>
+    <span class="n">byline</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&quot;Paws McGruff&quot;</span><span class="p">;</span>
+
+    <span class="p">[</span><span class="n">headerView</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">byline</span><span class="p">];</span>
+    
+    <span class="bp">UIImageView</span> <span class="o">*</span><span class="n">imageView</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImageView</span> <span class="n">autolayoutView</span><span class="p">];</span>
+    <span class="n">imageView</span><span class="p">.</span><span class="n">contentMode</span> <span class="o">=</span> <span class="n">UIViewContentModeScaleAspectFit</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">headerView</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">imageView</span><span class="p">];</span>
+    
+    <span class="c1">// Lovely image loaded for example purposes</span>
+    <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="n">DISPATCH_QUEUE_PRIORITY_DEFAULT</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">^</span><span class="p">{</span>
+        <span class="bp">UIImage</span> <span class="o">*</span><span class="n">kitten</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageWithData</span><span class="p">:[</span><span class="bp">NSData</span> <span class="nl">dataWithContentsOfURL</span><span class="p">:[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://placekitten.com/150/150&quot;</span><span class="p">]</span> <span class="nl">options</span><span class="p">:</span><span class="mi">0</span> <span class="nl">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">]];</span>
+        <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="o">^</span><span class="p">{</span>
+            <span class="n">imageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">kitten</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+    
+    <span class="bp">UIButton</span> <span class="o">*</span><span class="n">button</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIButton</span> <span class="nl">buttonWithType</span><span class="p">:</span><span class="n">UIButtonTypeRoundedRect</span><span class="p">];</span>
+    <span class="n">button</span><span class="p">.</span><span class="n">translatesAutoresizingMaskIntoConstraints</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">button</span> <span class="nl">setTitle</span><span class="p">:</span><span class="s">@&quot;Button&quot;</span> <span class="nl">forState</span><span class="p">:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">headerView</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">button</span><span class="p">];</span>
+    
+    <span class="c1">// Layout</span>
+    
+    <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">views</span> <span class="o">=</span> <span class="n">NSDictionaryOfVariableBindings</span><span class="p">(</span><span class="n">headerView</span><span class="p">,</span><span class="n">headline</span><span class="p">,</span><span class="n">byline</span><span class="p">,</span><span class="n">imageView</span><span class="p">,</span><span class="n">button</span><span class="p">);</span>
+    <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">metrics</span> <span class="o">=</span> <span class="l">@{</span><span class="s">@&quot;imageEdge&quot;</span><span class="o">:</span><span class="mf">@150.0</span><span class="p">,</span><span class="s">@&quot;padding&quot;</span><span class="o">:</span><span class="mf">@15.0</span><span class="l">}</span><span class="p">;</span>
+    
+    <span class="c1">// Header view fills the width of its superview</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addConstraints</span><span class="p">:[</span><span class="bp">NSLayoutConstraint</span> <span class="nl">constraintsWithVisualFormat</span><span class="p">:</span><span class="s">@&quot;|[headerView]|&quot;</span> <span class="nl">options</span><span class="p">:</span><span class="mi">0</span> <span class="nl">metrics</span><span class="p">:</span><span class="n">metrics</span> <span class="nl">views</span><span class="p">:</span><span class="n">views</span><span class="p">]];</span>
+    <span class="c1">// Header view is pinned to the top of the superview</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addConstraints</span><span class="p">:[</span><span class="bp">NSLayoutConstraint</span> <span class="nl">constraintsWithVisualFormat</span><span class="p">:</span><span class="s">@&quot;V:|[headerView]&quot;</span> <span class="nl">options</span><span class="p">:</span><span class="mi">0</span> <span class="nl">metrics</span><span class="p">:</span><span class="n">metrics</span> <span class="nl">views</span><span class="p">:</span><span class="n">views</span><span class="p">]];</span>
+    
+    <span class="c1">// Headline and image horizontal layout</span>
+    <span class="p">[</span><span class="n">headerView</span> <span class="nl">addConstraints</span><span class="p">:[</span><span class="bp">NSLayoutConstraint</span> <span class="nl">constraintsWithVisualFormat</span><span class="p">:</span><span class="s">@&quot;|-padding-[headline]-padding-[imageView(imageEdge)]-padding-|&quot;</span> <span class="nl">options</span><span class="p">:</span><span class="mi">0</span> <span class="nl">metrics</span><span class="p">:</span><span class="n">metrics</span> <span class="nl">views</span><span class="p">:</span><span class="n">views</span><span class="p">]];</span>
+    
+    <span class="c1">// Headline and byline vertical layout - spacing at least zero between the two</span>
+    <span class="p">[</span><span class="n">headerView</span> <span class="nl">addConstraints</span><span class="p">:[</span><span class="bp">NSLayoutConstraint</span> <span class="nl">constraintsWithVisualFormat</span><span class="p">:</span><span class="s">@&quot;V:|-padding-[headline]-&gt;=0-[byline]-padding-|&quot;</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSLayoutFormatAlignAllLeft</span> <span class="nl">metrics</span><span class="p">:</span><span class="n">metrics</span> <span class="nl">views</span><span class="p">:</span><span class="n">views</span><span class="p">]];</span>
+    
+    <span class="c1">// Image and button vertical layout - spacing at least 15 between the two</span>
+    <span class="p">[</span><span class="n">headerView</span> <span class="nl">addConstraints</span><span class="p">:[</span><span class="bp">NSLayoutConstraint</span> <span class="nl">constraintsWithVisualFormat</span><span class="p">:</span><span class="s">@&quot;V:|-padding-[imageView(imageEdge)]-&gt;=padding-[button]-padding-|&quot;</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSLayoutFormatAlignAllLeft</span> <span class="o">|</span> <span class="n">NSLayoutFormatAlignAllRight</span> <span class="nl">metrics</span><span class="p">:</span><span class="n">metrics</span> <span class="nl">views</span><span class="p">:</span><span class="n">views</span><span class="p">]];</span>
+<span class="p">}</span>
+</pre></div>

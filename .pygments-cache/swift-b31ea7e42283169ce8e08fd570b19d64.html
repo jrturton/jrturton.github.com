@@ -1,0 +1,10 @@
+<div class="highlight"><pre><span class="k">class</span> <span class="k">func</span> <span class="n">fetchRequest</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSFetchRequest</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="bp">NSFetchRequest</span><span class="p">(</span><span class="nl">entityName</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">entityName</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="k">func</span> <span class="n">fetchRequestWithKey</span><span class="p">(</span><span class="nl">key</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">ascending</span><span class="p">:</span> <span class="n">Bool</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">NSFetchRequest</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="n">request</span> <span class="o">=</span> <span class="n">fetchRequest</span><span class="p">()</span>
+  <span class="n">request</span><span class="p">.</span><span class="n">sortDescriptors</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSSortDescriptor</span><span class="p">(</span><span class="nl">key</span><span class="p">:</span> <span class="n">key</span><span class="p">,</span> <span class="nl">ascending</span><span class="p">:</span> <span class="n">ascending</span><span class="p">)]</span>
+  <span class="k">return</span> <span class="n">request</span>
+<span class="p">}</span>
+</pre></div>

@@ -1,0 +1,16 @@
+<div class="highlight"><pre><span class="k">func</span> <span class="n">fetchAll</span><span class="o">&lt;</span><span class="nl">T</span> <span class="p">:</span> <span class="bp">NSManagedObject</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">entity</span><span class="p">:</span> <span class="n">T</span><span class="p">.</span><span class="kt">Type</span><span class="p">,</span> <span class="nl">key</span><span class="p">:</span><span class="n">String</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">ascending</span><span class="p">:</span><span class="n">Bool</span> <span class="o">=</span> <span class="nb">true</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">let</span> <span class="nl">fetchRequest</span> <span class="p">:</span> <span class="bp">NSFetchRequest</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">key</span> <span class="o">=</span> <span class="n">key</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">entity</span><span class="p">.</span><span class="n">fetchRequestWithKey</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nl">ascending</span><span class="p">:</span> <span class="n">ascending</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">entity</span><span class="p">.</span><span class="n">fetchRequest</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}()</span>
+  
+  <span class="k">var</span> <span class="nl">error</span> <span class="p">:</span> <span class="bp">NSError</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span>
+  <span class="k">if</span> <span class="k">let</span> <span class="n">results</span> <span class="o">=</span> <span class="n">executeFetchRequest</span><span class="p">(</span><span class="n">fetchRequest</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">error</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">results</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">T</span><span class="p">]()</span>
+<span class="p">}</span>
+</pre></div>

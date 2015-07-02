@@ -1,0 +1,34 @@
+<div class="highlight"><pre><span class="p">-(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setUpCoreDataStack</span>
+<span class="p">{</span>
+    <span class="bp">NSManagedObjectModel</span> <span class="o">*</span><span class="n">model</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSManagedObjectModel</span> <span class="nl">mergedModelFromBundles</span><span class="p">:[</span><span class="bp">NSBundle</span> <span class="n">allBundles</span><span class="p">]];</span>
+    <span class="bp">NSPersistentStoreCoordinator</span> <span class="o">*</span><span class="n">psc</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSPersistentStoreCoordinator</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithManagedObjectModel</span><span class="p">:</span><span class="n">model</span><span class="p">];</span>
+    
+    <span class="bp">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[[[[</span><span class="bp">NSFileManager</span> <span class="n">defaultManager</span><span class="p">]</span> <span class="nl">URLsForDirectory</span><span class="p">:</span><span class="n">NSDocumentDirectory</span> <span class="nl">inDomains</span><span class="p">:</span><span class="n">NSUserDomainMask</span><span class="p">]</span> <span class="n">lastObject</span><span class="p">]</span> <span class="nl">URLByAppendingPathComponent</span><span class="p">:</span><span class="s">@&quot;Database.sqlite&quot;</span><span class="p">];</span>
+    
+    <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="l">@{</span><span class="nl">NSPersistentStoreFileProtectionKey</span><span class="p">:</span> <span class="n">NSFileProtectionComplete</span><span class="p">,</span>
+                              <span class="nl">NSMigratePersistentStoresAutomaticallyOption</span><span class="p">:</span><span class="m">@YES</span><span class="l">}</span><span class="p">;</span>
+    <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="bp">NSPersistentStore</span> <span class="o">*</span><span class="n">store</span> <span class="o">=</span> <span class="p">[</span><span class="n">psc</span> <span class="nl">addPersistentStoreWithType</span><span class="p">:</span><span class="n">NSSQLiteStoreType</span> <span class="nl">configuration</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">URL</span><span class="p">:</span><span class="n">url</span> <span class="nl">options</span><span class="p">:</span><span class="n">options</span> <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">store</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Error adding persistent store. Error %@&quot;</span><span class="p">,</span><span class="n">error</span><span class="p">);</span>
+
+        <span class="bp">NSError</span> <span class="o">*</span><span class="n">deleteError</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">([[</span><span class="bp">NSFileManager</span> <span class="n">defaultManager</span><span class="p">]</span> <span class="nl">removeItemAtURL</span><span class="p">:</span><span class="n">url</span> <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">deleteError</span><span class="p">])</span>
+        <span class="p">{</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+            <span class="n">store</span> <span class="o">=</span> <span class="p">[</span><span class="n">psc</span> <span class="nl">addPersistentStoreWithType</span><span class="p">:</span><span class="n">NSSQLiteStoreType</span> <span class="nl">configuration</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">URL</span><span class="p">:</span><span class="n">url</span> <span class="nl">options</span><span class="p">:</span><span class="n">options</span> <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">store</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// Also inform the user...</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Failed to create persistent store. Error %@. Delete error %@&quot;</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">deleteError</span><span class="p">);</span>
+            <span class="n">abort</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nb">self</span><span class="p">.</span><span class="n">managedObjectContext</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSManagedObjectContext</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithConcurrencyType</span><span class="p">:</span><span class="n">NSMainQueueConcurrencyType</span><span class="p">];</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">managedObjectContext</span><span class="p">.</span><span class="n">persistentStoreCoordinator</span> <span class="o">=</span> <span class="n">psc</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>

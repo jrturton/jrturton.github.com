@@ -1,0 +1,18 @@
+<div class="highlight"><pre><span class="k">func</span> <span class="n">attemptArray</span><span class="o">&lt;</span><span class="nl">T</span> <span class="p">:</span> <span class="n">WebServiceResponse</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">possible</span><span class="p">:</span> <span class="p">[</span><span class="n">JSON</span><span class="p">]</span><span class="o">?</span><span class="p">,</span> <span class="k">inout</span> <span class="nl">success</span> <span class="p">:</span> <span class="n">Bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">success</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="n">actual</span> <span class="o">=</span> <span class="n">possible</span> <span class="p">{</span>
+            <span class="k">var</span> <span class="n">parsedResults</span> <span class="o">=</span> <span class="p">[</span><span class="n">T</span><span class="p">]()</span>
+            <span class="k">for</span> <span class="n">jsonRepresentation</span> <span class="k">in</span> <span class="n">actual</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="k">let</span> <span class="n">parsedResult</span> <span class="o">=</span> <span class="n">T</span><span class="p">(</span><span class="n">jsonRepresentation</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">parsedResults</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">parsedResult</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="o">!</span><span class="n">parsedResults</span><span class="p">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">parsedResults</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="nb">false</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">T</span><span class="p">]()</span>
+<span class="p">}</span>
+</pre></div>

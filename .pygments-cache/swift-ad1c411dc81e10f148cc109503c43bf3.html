@@ -1,0 +1,9 @@
+<div class="highlight"><pre><span class="k">let</span> <span class="n">request</span> <span class="o">=</span> <span class="bp">NSFetchRequest</span><span class="p">(</span><span class="nl">entityName</span><span class="p">:</span> <span class="s">&quot;Person&quot;</span><span class="p">)</span>
+<span class="k">var</span> <span class="nl">error</span> <span class="p">:</span> <span class="bp">NSError</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span>
+<span class="k">let</span> <span class="n">people</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">executeFetchRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">error</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="n">Person</span><span class="p">]</span>
+<span class="k">if</span> <span class="k">let</span> <span class="n">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
+  <span class="c1">// Better do something about that error...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="c1">// Do something with all those people....</span>
+<span class="p">}</span>
+</pre></div>

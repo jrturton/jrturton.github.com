@@ -1,0 +1,7 @@
+<div class="highlight"><pre><span class="k">extension</span> <span class="bp">NSManagedObject</span> <span class="p">{</span>    
+  <span class="k">class</span> <span class="k">var</span> <span class="nl">entityName</span> <span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">components</span> <span class="o">=</span> <span class="n">NSStringFromClass</span><span class="p">(</span><span class="nb">self</span><span class="p">).</span><span class="n">componentsSeparatedByString</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">components</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
