@@ -20,3 +20,6 @@ redcarpet:
 
 # Code formatting
 highlighter: pygments
+
+gems:
+    - jekyll-sitemap
