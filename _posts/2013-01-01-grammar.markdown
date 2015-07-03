@@ -61,23 +61,33 @@ Its like an explosion in a smiley factory, and this code isn't even doing anythi
 
 ## One bite at a time
 
-    ;
+```objc
+;
+```
 
 The semicolon. This appears a couple of times in our example, and is a fairly simple one: it means the end of a statement. I deliberately haven't said the end of a _line_, because there are several lines in the example that don't have semicolons at the end. Full stops aren't used for this purpose, since that would be incredibly confusing when using decimal numbers. 
 
-    YES;
+```objc
+YES;
+```
     
 YES and NO are the two _Boolean_ values, named after Boole, a British mathematician who was never unsure about anything.
 
-    = YES;
+```objc
+= YES;
+```
 
 Does what it looks like. Something equals YES _end of statement_. There is some subtlety here - "equal" can be a _assignment_ (make this equal that) or a _comparison_ (does this equal that?). In Objective-C, a single equals sign is for assignment, a double equals sign `==` is for comparison. 
 
-    hidden = YES;
+```objc
+hidden = YES;
+```
     
 From what we learned above, this makes hidden, whatever that is, equal YES.
 
-    view.hidden = YES;
+```objc
+view.hidden = YES;
+```
     
 Another new punctuation mark. The full stop has _three_ uses for us in Objective-C, two of them uncomfortably similar. It can mean a decimal point, within a number, which is a safe and familiar one. It can mean access to a member of a `struct`, which is a concept from C, or it can mean access to an object's _properties_, using so-called **dot notation**.
 
@@ -103,7 +113,9 @@ How it works is this: if (_something in brackets_) is true, do the next thing I 
 
 In our case, the "the next thing I say" is `view.hidden = YES;`. We already know what that means, so let's look at the _something in brackets_:
 
-    indexOfViewToShow != idx
+```objc
+indexOfViewToShow != idx
+```    
     
 Here's the equals sign again, this time with an exclamation point in front of it. Earlier when discussing the equals sign, we said that there were assignment or comparison operators, and a double equals sign was for comparison, so `==` means `is this equal to that?`. `!=` is the opposite. It means `is this different to that?`. The question we are asking, then, is `is indexOfViewToShow different to idx?`. If the answer is yes, then we need to do `view.hidden = YES;`. 
 
@@ -139,7 +151,9 @@ What are the braces doing in our code sample? All they are enclosing is our if s
 
 The key character here is the caret `^`. This tells us that we are looking at an [Objective-C Block](http://developer.apple.com/library/ios/#documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html). A block is a very powerful, very useful construct that allows you to define a chunk of code, wrap it up and give it to something else to be executed at a later point in time. The syntax gets a little complex, so let's break it down as we've done with everything else so far. 
 
-    ^
+```objc
+^
+```
     
 Hey! Here comes a block!
 
@@ -176,17 +190,23 @@ A BOOL is a primitive type (we discussed it earlier - YES or NO) but the asteris
 
 Which brings us neatly to the next symbol in the example. Before the `^` which indicates the block, we have a colon `:`. This is used to indicate a method parameter. This is similar to the arguments in a block, but in Objective-C we have the helpful concept of meaningful method names, with parameter(s) interspersed throughout. Here is a typical C function call:
 
-    CGRectMake(10.0,30.0,100.0,200.0);
+```objc
+CGRectMake(10.0,30.0,100.0,200.0);
+```
     
 Yes, it takes four arguments, but what do they mean? Simply reading the code doesn't give you any context. Here is an Objective-C method call:
 
-    [title stringByPaddingToLength:30 withString:@" " startingAtIndex:0];
+```objc
+[title stringByPaddingToLength:30 withString:@" " startingAtIndex:0];
+```
     
 Yes, it's verbose. But it's also obvious what's going on. You spend (or should spend) far more time reading code than writing it. Three arguments, each indicated by a colon, and the name of the method forms a clear English description of what is going to happen. Method naming like this is what makes this language great. Or terrible, depending on your opinion. 
 
 You'll notice that in my last example I also sneaked in the remaining two punctuation symbols from our original example - the square brackets. These surround each method call. Method calls look like this:
 
-    [receiver doSomethingWithThis:argument andThat:otherArgument];
+```objc
+[receiver doSomethingWithThis:argument andThat:otherArgument];
+```
     
 The _receiver_ is the thing that will perform the method. It is called the receiver for historical reasons - Objective-C is based on Smalltalk, which had the concept of sending _messages_ to _receivers_.
 
