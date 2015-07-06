@@ -33,7 +33,7 @@ It's also now recommended to create constraints first and activate them in a set
 - The constraint API was verbose and common tasks took too much boilerplate.  
 
 ## Why don't we need them any more?
-- Interface builder should now be your default option for creating your UI. Seriously. It's really good now, and I can imagine making an adaptive interface using size classes in code. 
+- Interface builder should now be your default option for creating your UI. Seriously. It's really good now, and I can't imagine making an adaptive interface using size classes in code. 
 - Stack views should be your default option for layout anyway. 
 
 With these changes alone, you'd be making constraints in code so rarely that the benefits of adding a layout helper aren't worth it. I haven't used my own category in the last couple of projects I've worked on. 
