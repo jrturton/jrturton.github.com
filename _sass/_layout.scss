@@ -38,12 +38,20 @@
     }
     
     .page-link {
+        float: left;
+        padding: 5px 0;
+        display: block;
         color: $text-color;
         line-height: $base-line-height;
 
         // Gaps between nav items, but not on the first one
         &:not(:first-child) {
             margin-left: 20px;
+        }
+        &:hover {
+            .icon path {
+                fill: $brand-color;
+            }
         }
     }
 }
