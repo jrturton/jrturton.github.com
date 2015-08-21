@@ -40,13 +40,13 @@ There have to be enough constraints in place to be able to unambiguously assign 
 
 A constraint describes a relationship between two attributes of a view. The attributes are things such as the top of a view, or its centre point along the x-axis. The relationship can be equal, less than or equal or greater than or equal. It can be modified by a multiplier, and amended by a constant:
 
-```    
+```objc    
 Attribute = Second attribute * multiplier + constant
 ```
 
 For example, if you wanted a view to have its left edge pinned to the left edge of its superview, the constraint would be:
 
-```
+```objc
 Left edge of view = Left edge of superview * 1.0 + 0.0
 ```
 
