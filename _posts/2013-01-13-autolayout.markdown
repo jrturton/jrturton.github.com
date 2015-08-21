@@ -40,12 +40,16 @@ There have to be enough constraints in place to be able to unambiguously assign 
 
 A constraint describes a relationship between two attributes of a view. The attributes are things such as the top of a view, or its centre point along the x-axis. The relationship can be equal, less than or equal or greater than or equal. It can be modified by a multiplier, and amended by a constant:
 
-    Attribute = Second attribute * multiplier + constant
+```    
+Attribute = Second attribute * multiplier + constant
+```
 
 For example, if you wanted a view to have its left edge pinned to the left edge of its superview, the constraint would be:
 
-    Left edge of view = Left edge of superview * 1.0 + 0.0
-    
+```
+Left edge of view = Left edge of superview * 1.0 + 0.0
+```
+
 Once a constraint is defined and added to a view, the `constant` property can be modified. This allows changes to the layout to be made at run-time.
 
 Absolute values can be used by having the second attribute to be nil, so the value is derived entirely from the constant.
