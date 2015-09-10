@@ -74,6 +74,6 @@ Now when you hit that breakpoint, it puts your message out into the clean, unclu
 
 You can combine two of the previous tips with a third and you have an instant method of mapping out screen changes in your app. 
 
-Create a symbolic breakpoint on `-[UIViewController viewDidAppear:]`. Add `pvc` as the debugger action and choose to automatically continue. Now excercise your app - as you move around and show screens, you'll be shown a continuously up-to-date list of all the view controllers being put on the screen at the same time. 
+Create a symbolic breakpoint on `-[UIViewController viewDidAppear:]`. Add `pvc` as the debugger action and choose to automatically continue. Now exercise your app - as you move around and show screens, you'll be shown a continuously up-to-date list of all the view controllers being put on the screen at the same time. 
 
 These few simple tips have really helped me when I've been dropped in an enemy codebase with no map. I hope they help you too. 
