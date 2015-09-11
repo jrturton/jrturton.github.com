@@ -34,12 +34,16 @@ Even writing the definition takes several lines, so you can see why this method 
 
 First, let's have the usual discussion of each argument in the main method and try to explain what it is all for. Remember that constraints are usually expressed as:
 
-    attribute1 == multiplier x attribute2 + constant
-    
+```objc
+attribute1 == multiplier x attribute2 + constant
+```
+
 `==` can also be `>=` or `<=`, and in some cases, `multiplier` and `attribute2` are irrelevant, so we are just looking at:
 
-    attribute1 == constant
-    
+```objc
+attribute1 == constant
+```
+
 With that in mind, let's go through the method. It returns a single instance of `NSLayoutConstraint`, rather than the array of constraints returned by the visual format language method. 
 
 - `view1`
