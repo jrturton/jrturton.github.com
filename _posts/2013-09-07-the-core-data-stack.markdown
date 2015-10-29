@@ -101,6 +101,7 @@ NSDictionary *options = @{NSPersistentStoreFileProtectionKey: NSFileProtectionCo
 ### A core data stack in slightly more than five lines
 
 Let's put it all together.
+
 ```objc
 -(void)setUpCoreDataStack
 {
