@@ -6,6 +6,8 @@ title: "Notes on WatchKit"
 
 I recently completed a project involving a WatchKit app. It was not a pleasant experience, so here's a screed of vague complaints with some half-baked possible solutions, and a possible ray of sunshine at the end. 
 
+<!--more-->
+
 ## Tools and hardware 
 
 The simulator seems unreliable at connecting to the phone simulator and the debugger. In this respect it is an accurate simulator. 
