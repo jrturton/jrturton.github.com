@@ -204,3 +204,26 @@ pre {
         }
     }
 }
+
+/**
+* Tables
+*/
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid $brand-color;
+}
+
+th{
+    border:2px solid $brand-color;
+    background-color: $brand-color-light;
+}
+
+td{
+    border:1px solid $brand-color;
+}
+
+.center-image {
+    text-align: center;
+}
