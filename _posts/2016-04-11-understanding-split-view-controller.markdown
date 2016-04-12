@@ -26,7 +26,7 @@ The split view controller has a Boolean property, `collapsed`, which indicates w
 | Other iPhones | Any | - | `.Compact` | `true` |
 
 <p></p>
-When a split view controller is born, it assumes it is in a non-collapsed state. When it is added to the window, if running in a `.Regular` horizontal size class, it collapses. If the user rotates their iPhone 6 Plus or changes multitasking mode in their iPad (or rotates their iPad whilst multitasking, the list of testing scenarios goes on and on...) it can transition between the expanded and collapsed states. 
+When a split view controller is born, it assumes it is in a non-collapsed state. When it is added to the window, if running in a `.Compact` horizontal size class, it collapses. If the user rotates their iPhone 6 Plus or changes multitasking mode in their iPad (or rotates their iPad whilst multitasking, the list of testing scenarios goes on and on...) it can transition between the expanded and collapsed states. 
 
 The transition between collapsed and expanded states involves several actors, and requires quite a lot of spelunking through the documentation to understand, so I've done that for you. Let's start with collapsing.
 
