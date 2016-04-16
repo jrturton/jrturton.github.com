@@ -84,7 +84,7 @@ override func collapseSecondaryViewController(secondaryViewController: UIViewCon
 }
 ```  
 
-All you're doing here is taking the view controller stack from the secondary navigation controller, and adding it in to the stack of the primary controller. 
+All you're doing here is taking the view controller stack from the secondary navigation controller, and adding it in to the stack of the primary controller. Note that if you do this, **you're also responsible for splitting the stack on expand, and wrapping the secondary stack in a new navigation controller**. 
 
 Here's a representation of what each version looks like:
 
@@ -97,7 +97,7 @@ That's enough collapsing. Time to look at expanding.
 
 As with collapsing, first the split view controller talks to its delegate, calling `primaryViewControllerForExpandingSplitViewController(_:)`. This is your opportunity to provide an entirely new view controller to be on the primary side. If this is not implemented or you return `nil`, the existing primary view controller will be used. If you implemented the corresponding method called during collapse, you probably want to reverse whatever you did there.
 
-To tease apart the primary and secondary view controllers, the `splitViewController(_:separateSecondaryViewControllerFromPrimaryViewController:)` delegate method is then called. This method returns a `UIViewController?`; if you return something, it will be the new secondary controller. If you don't, the split view controller will try to handle the separation itself. If you manually combined navigation stacks in the delegate method when collapsing, you will need to separate them yourself at this point. 
+To tease apart the primary and secondary view controllers, the `splitViewController(_:separateSecondaryViewControllerFromPrimaryViewController:)` delegate method is then called. This method returns a `UIViewController?`; if you return something, it will be the new secondary controller. If you don't, the split view controller will try to handle the separation itself. If you manually combined navigation stacks in the delegate method when collapsing, you will need to separate them yourself at this point, and create a new navigation controller for the secondary view controller. 
 
 If you return `nil` from this method or do not implement it, the split view controller tries to handle the separation itself by calling `separateSecondaryViewControllerForSplitViewController(_:)` on the primary view controller. Like the corresponding collapse method, this is implemented as (presumably) a stub on `UIViewController`. `UINavigationController` overrides this method and will return the top view controller from its navigation stack. If you recall the discussion in the collapse section, this will be itself a navigation controller, if you're using the unmodified template code. 
 
