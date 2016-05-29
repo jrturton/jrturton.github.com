@@ -34,7 +34,7 @@ Is functional programming a replacement for object-oriented programming? Can I w
 
 This contrasts with OOP, where often you'd change or access an object's underlying state by calling functions defined on it. This is probably best illustrated with an example, of Genuine Production Code from my current project:
 
-```
+```objc
 -(NSString *)stringFromMinutes:(NSInteger)minutes
 {
     NSInteger hoursPart = minutes / 60;
@@ -59,7 +59,7 @@ This contrasts with OOP, where often you'd change or access an object's underlyi
 
 And, functionally:
 
-```
+```objc
 -(NSString *)stringFromMinutes:(NSInteger)minutes recordingMode:(JRTRecordingMode)recordingMode
 {
     NSInteger hoursPart = minutes / 60;
