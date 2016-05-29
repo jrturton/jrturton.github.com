@@ -25,7 +25,7 @@ Visual Format Language (VFL) allows the concise building of your layout using an
 
 <!--more-->
 
-###A quick diversion
+### A quick diversion
 
 When building a layout in code, all of your views must have `translatesAutoresizingMaskIntoConstraints` set to `NO`. This quickly becomes tedious. A quick category on UIView helps here:
 
