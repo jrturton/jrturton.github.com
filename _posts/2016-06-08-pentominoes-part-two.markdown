@@ -53,12 +53,22 @@ This gives the error "Extension of protocol cannot have an inheritance clause". 
 public protocol PlayingGrid: CustomStringConvertible {
 ```
 
-Then in the extension:
+Then in the extension, it can be implemented. I rewrote the implementation so it didn't look so much like robot vomit:
 
 ```swift
+extension Bool {
+    var gridCharacter: String {
+        return self ? "#" : "_"
+    }
+}
+
 extension PlayingGrid where Self: CustomStringConvertible {
     public var description: String {
-        let descriptions : [String] = rows.map { $0.reduce("") { $0 + ($1 ? "#" : "_") } }
+        let descriptions : [String] = rows.map { row in
+            row.reduce("") { string, gridValue in
+                string + gridValue.gridCharacter 
+            }
+        }
         return descriptions.joinWithSeparator("\n")
     }
 }
@@ -73,8 +83,10 @@ public protocol PlayingGrid: CustomStringConvertible, CustomPlaygroundQuickLooka
 Then, amend the constraints on the extension (they need to be in the same extension, because the quick look depends on the description):
 
 ```swift
-extension PlayingGrid where Self: CustomStringConvertible, Self: CustomPlaygroundQuickLookable {
+extension PlayingGrid where Self: protocol<CustomStringConvertible, CustomPlaygroundQuickLookable> {
 ```
+
+(the `protocol< >` syntax was pointed out to me by the wonderful [@jessyMeow](https://twitter.com/jessyMeow))
 
 Within the extension, I used the same implementation of `customPlaygroundQuickLook()` from `Tile`, removing the code from that class. 
 
