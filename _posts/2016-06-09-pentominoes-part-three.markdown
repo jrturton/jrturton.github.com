@@ -136,3 +136,5 @@ extension Board {
 I added a couple of utility functions to make this more readable, not shown here. 
 
 At this point, the blog posts have caught up to where I am in development. So from now on I'll be giving commit links to the repo for the state at the end of each post. Here's the [first](https://github.com/jrturton/Pentominoes/commit/b95d9b64753550e9e165abb8e987bc6c3dd1d991).
+
+In the [next post](http://commandshift.co.uk/blog/2016/06/12/pentominoes-part-four/) I talk about updating the board's model when tiles are placed and removed.

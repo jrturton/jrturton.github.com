@@ -129,6 +129,6 @@ public init(size: Size) {
 }
 ```
 
-I feel better about the code after these changes. I think its a sensible use of a protocol, I learned lots of things about default implementations and protocol constraints, and the actual `Board` and `Tile` implementations are currently very light. In the next part I will start to work on some game logic - placing tiles on the board. 
+I feel better about the code after these changes. I think its a sensible use of a protocol, I learned lots of things about default implementations and protocol constraints, and the actual `Board` and `Tile` implementations are currently very light. In the [next part](http://commandshift.co.uk/blog/2016/06/09/pentominoes-part-three/) I will start to work on some game logic - placing tiles on the board. 
 
 

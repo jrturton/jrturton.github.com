@@ -146,4 +146,4 @@ private func reverseRows() {
 }
 ```
 
-Thanks to the quick looking in the playground it was easy to check that this was working as intended. That was tiles all done. The next part of the series will talk about the board.
+Thanks to the quick looking in the playground it was easy to check that this was working as intended. That was tiles all done. The [next part of the series](http://commandshift.co.uk/blog/2016/06/08/pentominoes-part-two/) will talk about the board.
