@@ -1,5 +1,5 @@
 --- 
-date: 2016-06-08
+date: 2016-06-09
 layout: post
 title: "Pentominoes, part three: Placing the first tile"
 --- 
