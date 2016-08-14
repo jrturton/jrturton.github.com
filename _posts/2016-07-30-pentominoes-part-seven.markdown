@@ -47,9 +47,9 @@ public func allowedDropLocation(tile: Tile, atPoint point: CGPoint, gridSize: CG
         var distanceToDropPoint = CGFloat.max
         for square in squaresSurrounding(potentialSquare) {
             if canPositionTile(tile, atSquare: square) {
-                let center = pointAtCenterOfSquare(square, gridSize: gridSize)
-                let xDistance = center.x - point.x
-                let yDistance = center.y - point.y
+                let origin = pointAtOriginOfSquare(square, gridSize: gridSize)
+                let xDistance = origin.x - point.x
+                let yDistance = origin.y - point.y
                 // No need to sqrt since we're just comparing
                 let distance = (xDistance * xDistance) + (yDistance * yDistance)
                 if distance < distanceToDropPoint {
@@ -105,9 +105,11 @@ I add a calculated property to `BoardView` so the path can be updated:
 ```swift
 var dropPath: CGPath? {
     set {
+        let origin = highlightLayer.position
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         highlightLayer.path = newValue
+        highlightLayer.position = origin
         CATransaction.commit()
     }
     get {
@@ -208,4 +210,4 @@ public override func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIVie
 
 To get this work I needed a way to check equality on tiles - this meant adding a  property to hold the `Shape` that the tile was initialized with. 
 
-That's all for this time - the current state of the code is [here](https://github.com/jrturton/Pentominoes/commit/3571d6be624b4a289dadd60d0e8b2418a0fb21f5). The game is now fully working - but it's not very jazzy. In the next post I'll be adding some "juice" - little touches to make it more fun.  
+That's all for this time - the current state of the code is [here](https://github.com/jrturton/Pentominoes/commit/44f9e6b55ff3cd4716888c898d7127a448115049). The game is now fully working - but it's not very jazzy. In the next post I'll be adding some "juice" - little touches to make it more fun.  
