@@ -4,7 +4,7 @@ layout: post
 title: "Fun with Sets"
 --- 
 
-A Set is a collection of unique members. The uniqueness of those members, in a Swift `Set`, is determined by the `hashValue`. This means you can only store values in a set that conform to `Hashable`. 
+A Set is a collection of unique members. The uniqueness of those members, in a Swift `Set`, is determined by equality (`==`). The `hashValue` is used to improve performance. This means you can only store values in a set that conform to `Hashable`. 
 
 To combine two sets, you use the `union` method. Consider the following groups of numbers: 
 
@@ -24,7 +24,7 @@ You may well be saying, "I don't care which one is included. 3 is 3", and you'd 
 
 To relieve the tedium of mapping JSON to Core Data models, there was code that creates a set of default "attribute mappings", which assume a 1:1 relationship between the entity attribute name and the field name from JSON. For each entity you can then specify additional mappings for when the names don't match up or you need to use a value transformer. The final set of mappings that gets used is a union of the default mappings and the specialised mappings. 
 
-The hash value of the attribute mapping was based solely on the "remote key path" of the mapping - the name of the field in the JSON response. This makes sense, because you don't want to map the same remote field to multiple attributes. 
+The equality and hash value of the attribute mapping was based solely on the "remote key path" of the mapping - the name of the field in the JSON response. This makes sense, because you don't want to map the same remote field to multiple attributes. 
 
 To demonstrate the principle without getting sidetracked, here is a simplified example using the reliable old `Person` struct: 
 
@@ -82,4 +82,4 @@ let union = set2.union(set1)
 
 _This behaviour is reversed in Swift 3_. Members of the _first_ set are kept when performing a union operation. This means that most of the specific mappings are dropped when performing the union, because there is often a default mapping with the same name. 
 
-A simple fix to reverse the order of the union, but it took an awful lot of head-scratching to find out what was happening and why. The Swift 3 documentation is specific about which members will be included in the event of a match, the earlier documentation is not. 
+It was a simple fix to reverse the order of the union, and a slightly longer fix to use `update` to make the intention of the code completely clear, but it took an awful lot of head-scratching to find out what was happening and why. The Swift 3 documentation is specific about which members will be included in the event of a match, the earlier documentation is not. 
