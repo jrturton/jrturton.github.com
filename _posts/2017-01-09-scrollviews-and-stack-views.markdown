@@ -18,7 +18,7 @@ Here's the view hierarchy you need:
 
 The scroll view needs to be pinned to the leading and trailing margins, with a space of zero. It should also be pinned to the top and bottom of the root view (not the layout guides - you'll need to hold alt down while choosing constraints to get this instead). 
 
-This will make your scroll view fill the entire scene. If you have a navigation bar or tab bart then it will sort the insets for you if the option "Adjust scroll view insets" is checked against the view controller (it is by default). This will let your content move behind the bars. 
+This will make your scroll view fill the entire scene. If you have a navigation bar or tab bar then it will sort the insets for you if the option "Adjust scroll view insets" is checked against the view controller (it is by default). This will let your content move behind the bars. 
 
 At this point your scroll view will have a size, but it won't have a content size. The content size comes from the constraints between the scroll view and its subviews. 
 
