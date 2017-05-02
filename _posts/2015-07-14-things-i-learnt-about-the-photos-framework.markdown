@@ -31,7 +31,7 @@ The completion block is also called if the request is cancelled, so if you're ca
 
 Finally, for reasons unknown, sometimes image requests would simply never return a full sized image. The completion block would be called, there would be nothing amiss in the `info` dictionary, but the `result` comes back as nil. I had a single image where this would happen all the time. 
 
-##Resizing mode
+## Resizing mode
 
 For scrolling through a large library, always use the `.Fast` resizing mode. You'd think that `.Exact` combined with opportunistic delivery would be optimal, but I found it made a huge performance difference, for no discernible quality difference, to stick with `.Fast`. 
 
