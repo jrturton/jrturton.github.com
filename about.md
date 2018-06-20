@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 ## Me
-I am an iOS developer at [MartianCraft](http://martiancraft.com). In my spare time I write apps for [Vertical Turtle](http://www.verticalturtle.co.uk) and do some writing and editing for [raywenderlich.com](http://www.raywenderlich.com).
+I am an iOS developer at [MartianCraft](http://martiancraft.com). In my spare time I do some writing and editing for [raywenderlich.com](http://www.raywenderlich.com).
 
 I was technical editor of [Core Data By Tutorials](http://www.raywenderlich.com/store/core-data-tutorials-ios-8-swift-edition?source=richardturton) (affiliate link) which you can also buy as part of the [Swift By Tutorials Bundle](http://www.raywenderlich.com/store/swift-tutorials-bundle?source=richardturton) (another affiliate link). I was also the tech editor of [iOS Animations By Tutorials](http://www.raywenderlich.com/store/ios-animations-by-tutorials?source=richardturton) (er, yet another affiliate link).
 
