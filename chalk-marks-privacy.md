@@ -2,6 +2,7 @@
 layout: page
 title: Chalk Marks Privacy Policy
 permalink: /chalk-marks-privacy/
+exclude: true
 ---
 
 ## Chalk Marks Privacy Policy
